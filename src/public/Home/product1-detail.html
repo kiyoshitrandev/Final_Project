@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FasClothes Product</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0"
+        />
+        <link rel="stylesheet" href="/Chatbot/Chatbotstyle.css" />
+        <link rel="stylesheet" href="/Home/index.css" />
+        <style>
+            .product-image {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 20px;
+            }
+            .detail-section {
+                border-left: 2px solid #ddd;
+                padding-left: 20px;
+            }
+            .price {
+                color: #d9534f;
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .original-price {
+                text-decoration: line-through;
+                color: #888;
+                font-size: 18px;
+            }
+            .availability {
+                color: green;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header and Navbar -->
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <img src="../img/Logo.png" width="125px" />
+                    </div>
+                    <nav>
+                        <ul id="MenuItems">
+                            <li><a href="Index-AL.html">Home</a></li>
+                            <li><a href="product1-AL.html">Products</a></li>
+                            <li><a href="AboutUs-AL.html">About Us</a></li>
+                            <li><a href="Contact-AL.html">Contact</a></li>
+                            <li><a href="#">Account</a></li>
+                            <li><a href="Cart.html">Cart</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail -->
+        <div class="container py-5">
+            <div class="row">
+                <!-- Product Image -->
+                <div class="col-md-6">
+                    <img
+                        src="../img/Product-1.jpg"
+                        alt="Product Image"
+                        class="product-image"
+                    />
+                </div>
+
+                <!-- Product Details -->
+                <div class="col-md-6 detail-section">
+                    <h1>Men's Plain T-shirt Black Bolf</h1>
+                    <p class="text-muted">Colorfast</p>
+                    <p class="price">
+                        <span class="original-price">$15.99</span> $9.99
+                    </p>
+                    <p class="text-muted">
+                        Best price valid until December 30, 2024
+                    </p>
+
+                    <!-- Sizes and Availability -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th>Add to Cart</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>S</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger btn-sm"
+                                        id="add-to-cart-01"
+                                    >
+                                        + Cart
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger btn-sm"
+                                        id="add-to-cart-02"
+                                    >
+                                        + Cart
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger btn-sm"
+                                        id="add-to-cart-03"
+                                    >
+                                        + Cart
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>XL</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger btn-sm"
+                                        id="add-to-cart-04"
+                                    >
+                                        + Cart
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Product Description -->
+                    <h5>Description</h5>
+                    <ul>
+                        <li>Comfortable short-sleeve crewneck t-shirt.</li>
+                        <li>Durable and beautiful fabric, colorfast.</li>
+                        <li>Suitable for a simple, casual style.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col-1">
+                        <h3>Download Our App</h3>
+                        <p>Download App for Android and IOS Mobile Phone.</p>
+                        <div class="app-logo">
+                            <img src="../img/play-store.png" />
+                            <img src="../img/app-store.png  " />
+                        </div>
+                    </div>
+                    <div class="footer-col-2">
+                        <img src="../img/FooterImg.png" />
+                        <p>
+                            Our Purpose Is To Sustainably Bring Timeless
+                            European Fashion to Every Man, Enhancing Confidence
+                            and Style.
+                        </p>
+                    </div>
+                    <div class="footer-col-3">
+                        <h3>Useful Links</h3>
+                        <ul>
+                            <li>Coupons</li>
+                            <li>Blog Post</li>
+                            <li>Return Policy</li>
+                            <li>Join Affiliate</li>
+                        </ul>
+                    </div>
+                    <div class="footer-col-4">
+                        <h3>Follow Us</h3>
+                        <ul>
+                            <li>Facebook</li>
+                            <li>Instagram</li>
+                            <li>X</li>
+                            <li>Youtube</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <p class="copyright">Copyright 2020 - Easy Tutorials</p>
+        </div>
+
+        <!-- Chatbot Toggler -->
+        <button id="chatbot-toggler">
+            <span class="material-symbols-rounded">mode_comment</span>
+            <span class="material-symbols-rounded">close</span>
+        </button>
+
+        <div class="chatbot-popup">
+            <!-- Chatbot Header -->
+            <div class="chat-header">
+                <div class="header-info">
+                    <svg
+                        class="chatbot-logo"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="50"
+                        height="50"
+                        viewBox="0 0 1024 1024"
+                    >
+                        <path
+                            d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z"
+                        />
+                    </svg>
+                    <h2 class="logo-text">AI Support</h2>
+                </div>
+                <button id="close-chatbot" class="material-symbols-rounded">
+                    keyboard_arrow_down
+                </button>
+            </div>
+
+            <!-- Chatbot Body -->
+            <div class="chat-body">
+                <div class="message bot-message">
+                    <svg
+                        class="bot-avatar"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="50"
+                        height="50"
+                        viewBox="0 0 1024 1024"
+                    >
+                        <path
+                            d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z"
+                        />
+                    </svg>
+                    <!-- prettier-ignore -->
+                    <div class="message-text"> Hey there  <br /> How can I help you today? </div>
+                </div>
+            </div>
+
+            <!-- Chatbot Footer -->
+            <div class="chat-footer">
+                <form action="#" class="chat-form">
+                    <textarea
+                        placeholder="Message..."
+                        class="message-input"
+                        required
+                    ></textarea>
+                    <div class="chat-controls">
+                        <button
+                            type="button"
+                            id="emoji-picker"
+                            class="material-symbols-outlined"
+                        >
+                            sentiment_satisfied
+                        </button>
+                        <div class="file-upload-wrapper">
+                            <input
+                                type="file"
+                                accept="image/*"
+                                id="file-input"
+                                hidden
+                            />
+                            <img src="#" />
+                            <button
+                                type="button"
+                                id="file-upload"
+                                class="material-symbols-rounded"
+                            >
+                                attach_file
+                            </button>
+                            <button
+                                type="button"
+                                id="file-cancel"
+                                class="material-symbols-rounded"
+                            >
+                                close
+                            </button>
+                        </div>
+                        <button
+                            type="submit"
+                            id="send-message"
+                            class="material-symbols-rounded"
+                        >
+                            arrow_upward
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+            // Example: Fetch product details from backend
+            document.addEventListener("DOMContentLoaded", function () {
+                const productId = 1; // This would be dynamic in a real app
+
+                // Fetch product details from the server
+                fetch(`/api/products/${productId}`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        document.getElementById("product-name").innerText =
+                            data.name;
+                        document.getElementById("product-image").src =
+                            data.image;
+                        document.getElementById(
+                            "product-description"
+                        ).innerText = data.description;
+                        document.getElementById(
+                            "product-price"
+                        ).innerText = `$${data.price}`;
+                    })
+                    .catch((error) =>
+                        console.error("Error fetching product:", error)
+                    );
+
+                // Add to Cart functionality
+                document
+                    .getElementById("add-to-cart-01")
+                    .addEventListener("click", function () {
+                        fetch(`/api/cart`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                productId: productId,
+                                quantity: 1,
+                            }),
+                        })
+                            .then((response) => response.json())
+                            .then((data) => alert("Product added to cart!"))
+                            .catch((error) =>
+                                console.error("Error adding to cart:", error)
+                            );
+                    });
+
+                // Add to Cart functionality
+                document
+                    .getElementById("add-to-cart-02")
+                    .addEventListener("click", function () {
+                        fetch(`/api/cart`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                productId: productId,
+                                quantity: 1,
+                            }),
+                        })
+                            .then((response) => response.json())
+                            .then((data) => alert("Product added to cart!"))
+                            .catch((error) =>
+                                console.error("Error adding to cart:", error)
+                            );
+                    });
+
+                // Add to Cart functionality
+                document
+                    .getElementById("add-to-cart-03")
+                    .addEventListener("click", function () {
+                        fetch(`/api/cart`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                productId: productId,
+                                quantity: 1,
+                            }),
+                        })
+                            .then((response) => response.json())
+                            .then((data) => alert("Product added to cart!"))
+                            .catch((error) =>
+                                console.error("Error adding to cart:", error)
+                            );
+                    });
+
+                // Add to Cart functionality
+                document
+                    .getElementById("add-to-cart-04")
+                    .addEventListener("click", function () {
+                        fetch(`/api/cart`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                productId: productId,
+                                quantity: 1,
+                            }),
+                        })
+                            .then((response) => response.json())
+                            .then((data) => alert("Product added to cart!"))
+                            .catch((error) =>
+                                console.error("Error adding to cart:", error)
+                            );
+                    });
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/Chatbot/Chatbot.js"></script>
+    </body>
+</html>
