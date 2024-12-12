@@ -203,7 +203,7 @@ const handleOutgoingMessage = (e) => {
         chatBody.appendChild(incomingMessageDiv);
         chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: "smooth" });
         generateBotResponse(incomingMessageDiv);
-    }, 600);
+    }, 100);
 };
 
 // Điều chỉnh chiều cao của trường nhập liệu một cách linh hoạt
@@ -286,5 +286,3 @@ closeChatbot.addEventListener("click", () =>
 chatbotToggler.addEventListener("click", () =>
     document.body.classList.toggle("show-chatbot")
 );
-
-if (lowerCasedText.includes("clothes") || lowerCasedText.includes("fashion"));

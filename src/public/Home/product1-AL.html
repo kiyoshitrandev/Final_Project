@@ -25,11 +25,19 @@
                             <li><a href="product1-AL.html">Products</a></li>
                             <li><a href="AboutUs-AL.html">About Us</a></li>
                             <li><a href="Contact-AL.html">Contact</a></li>
-                            <li><a href="#">Account</a></li>
+                            <li><a href="Account.html">Account</a></li>
                             <li><a href="Cart.html">Cart</a></li>
                         </ul>
                     </nav>
-                    <img src="../img/Cart.png" width="30px" height="30px" />
+                    <img
+                        src="../img/Logout.png"
+                        id="logout-btn"
+                        class="logout-btn"
+                        width="30px"
+                        height="20px"
+                        alt="Logout"
+                        onclick="logout()"
+                    />
                     <img
                         src="../img/menu.png"
                         class="menu-icon"
@@ -39,19 +47,27 @@
             </div>
         </div>
 
-        <!-- featured products -->
+        <!-- Featured Products -->
         <div class="small-container">
             <div class="row row-2">
                 <h2>All Products</h2>
+                <div class="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search products..."
+                        class="search-input"
+                    />
+                    <button class="search-btn">🔍</button>
+                </div>
                 <select>
-                    <option>Default Shorting</option>
-                    <option>Short by Price</option>
-                    <option>Short by popularity</option>
-                    <option>Short by Sale</option>
+                    <option>Default Sorting</option>
+                    <option>Sort by Price</option>
+                    <option>Sort by Popularity</option>
+                    <option>Sort by Sale</option>
                 </select>
             </div>
-
             <div class="row">
+                <!-- Each product inside col-4 -->
                 <div class="col-4">
                     <a
                         href="/Home/product1-detail.html"
@@ -270,6 +286,29 @@
             </div>
         </div>
 
+        <script>
+            // Lấy các phần tử từ HTML
+            const searchInput = document.querySelector(".search-input");
+            const searchButton = document.querySelector(".search-btn");
+            const productCards = document.querySelectorAll(".col-4");
+
+            // Hàm tìm kiếm
+            function searchProducts() {
+                const searchQuery = searchInput.value.toLowerCase().trim(); // Lấy giá trị tìm kiếm
+                productCards.forEach((card) => {
+                    const productName = card
+                        .querySelector("h4")
+                        .textContent.toLowerCase(); // Tên sản phẩm trong mỗi card
+                    if (productName.includes(searchQuery)) {
+                        card.style.display = "block"; // Hiển thị sản phẩm nếu tên sản phẩm chứa từ khóa tìm kiếm
+                    } else {
+                        card.style.display = "none"; // Ẩn sản phẩm nếu không chứa từ khóa tìm kiếm
+                    }
+                });
+            }
+            searchButton.addEventListener("click", searchProducts);
+            searchInput.addEventListener("input", searchProducts);
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
         <script src="/Chatbot/Chatbot.js"></script>
         <script src="/Home/Index.js"></script>

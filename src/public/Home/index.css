@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,9...=swap");
 
 * {
     margin: 0;
@@ -71,6 +71,25 @@ nav .btnLogin-popup:hover {
     color: #fff;
 }
 
+.logout-btn {
+    cursor: pointer; /* Con trỏ thay đổi khi di chuột qua */
+    border: none; /* Loại bỏ viền */
+    border-radius: 50%; /* Làm nút logout thành hình tròn */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+.logout-btn:hover {
+    transform: scale(1.1); /* Tăng kích thước khi hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+}
+
+.logout-btn:active {
+    transform: scale(1.05); /* Giảm nhẹ kích thước khi nhấn */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Đổ bóng giảm nhẹ */
+    opacity: 0.8; /* Làm nút hơi mờ */
+}
+
+/* body style */
 .container {
     max-width: 1300px;
     margin: auto;
@@ -268,52 +287,6 @@ select:focus {
     color: #fff;
 }
 
-/* ----- About Us ----- */
-.about-section,
-.contact-section {
-    padding: 50px 0;
-    text-align: center;
-}
-
-.about-section h1,
-.contact-section h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.about-section p,
-.contact-section p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 30px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.contact-form button {
-    width: 100%;
-    background: #ff523b;
-    border: none;
-    padding: 10px;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.contact-form button:hover {
-    background: rgb(11, 122, 226);
-}
-
 /* -------- Cart Items -------- */
 .cart-page {
     margin: 80px auto;
@@ -366,13 +339,59 @@ th:last-child {
     text-align: right;
 }
 
+/* ----- About Us ----- */
+.about-section,
+.contact-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.about-section h1,
+.contact-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.about-section p,
+.contact-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    width: 100%;
+    background: #ff523b;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background: rgb(11, 122, 226);
+}
+
 /* Media query for menu */
 @media only screen and (max-width: 800px) {
     nav ul {
         position: absolute;
         top: 70px;
         left: 0;
-        background: #333;
+        background: #c0c0c0;
         width: 100%;
         overflow: hidden;
         transition: max-height 0.5s;

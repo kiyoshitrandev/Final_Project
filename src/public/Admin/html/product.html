@@ -7,17 +7,20 @@
         <link rel="stylesheet" href="../css/product.css" />
     </head>
     <body>
-        <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="../html/admin.html">Admin Dashboard</a></li>
+                <li><a href="../html/user.html">Users</a></li>
+                <li><a href="#">Products</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
             <header>
                 <h1>Product Management</h1>
             </header>
-            <nav>
-                <ul>
-                    <li><a href="../html/admin.html">Dashboard</a></li>
-                    <li><a href="../html/user.html">Users</a></li>
-                </ul>
-            </nav>
-            <main>
+
+            <section>
                 <h2>Add or Edit Products</h2>
 
                 <!-- Form to Add/Edit Product -->
@@ -37,10 +40,20 @@
                         required
                         min="1"
                     />
+                    <input
+                        type="number"
+                        id="productPrice"
+                        placeholder="Price"
+                        required
+                        min="0"
+                    />
                     <button type="submit" id="submitButton">Add Product</button>
                 </form>
+            </section>
 
+            <section>
                 <h2>Existing Products</h2>
+
                 <!-- Table for Displaying Products -->
                 <table id="productTable">
                     <thead>
@@ -48,14 +61,16 @@
                             <th>Product Name</th>
                             <th>Image</th>
                             <th>Quantity</th>
+                            <th>Price</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody id="productTableBody">
-                        <!-- Products will be displayed here -->
+                        <!-- Product rows will be inserted here dynamically -->
                     </tbody>
                 </table>
-            </main>
+            </section>
+
             <footer>
                 <p>&copy; 2024 Product Management</p>
             </footer>

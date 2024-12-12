@@ -1,86 +1,110 @@
 // Initialize an empty user list
-let users = [];
+let users = [
+    {
+        id: "1",
+        name: "admin",
+        email: "admin@example.com",
+    },
+    {
+        id: "2",
+        name: "user",
+        email: "user@example.com",
+    },
+];
 
-// Event listener for form submission
-document.getElementById("userForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Get user data from the form inputs
-    const userId = document.getElementById("userId").value;
-    const userName = document.getElementById("userName").value;
-    const userEmail = document.getElementById("userEmail").value;
-    const userPhone = document.getElementById("userPhone").value;
-
-    // Check if we are editing or adding a new user
-    if (userId) {
-        // Editing an existing user
-        const user = users.find((u) => u.id === userId);
-        user.name = userName;
-        user.email = userEmail;
-        user.phone = userPhone;
-    } else {
-        // Adding a new user
-        const newUser = {
-            id: Date.now().toString(), // Unique ID based on current timestamp
-            name: userName,
-            email: userEmail,
-            phone: userPhone,
-        };
-        users.push(newUser);
-    }
-
-    // Reset the form
-    document.getElementById("userForm").reset();
-    document.getElementById("submitButton").textContent = "Add User";
-    document.getElementById("userId").value = ""; // Clear hidden ID field
-
-    // Display the updated users in the table
-    displayUsers();
-});
-
-// Function to display users in the table
-function displayUsers() {
-    const userTableBody = document.getElementById("userTableBody");
-    userTableBody.innerHTML = ""; // Clear the table before rendering new rows
+// Function to render users in the table
+function renderUsers() {
+    const userTable = document
+        .getElementById("userTable")
+        .getElementsByTagName("tbody")[0];
+    userTable.innerHTML = ""; // Clear the table body
 
     users.forEach((user) => {
-        // Create a new row for each user
-        const row = document.createElement("tr");
-
-        // Add user data to the row
+        const row = userTable.insertRow();
         row.innerHTML = `
-            <td>${user.name}</td>
-            <td>${user.email}</td>
-            <td>${user.phone}</td>
-            <td>
-                <button class="edit-btn" onclick="editUser('${user.id}')">Edit</button>
-                <button class="delete-btn" onclick="deleteUser('${user.id}')">Delete</button>
-            </td>
-        `;
-
-        // Append the row to the table body
-        userTableBody.appendChild(row);
+      <td>${user.name}</td>
+      <td>${user.email}</td>
+      <td>
+        <button onclick="editUser('${user.id}')" class="btn">Edit</button>
+        <button onclick="deleteUser('${user.id}')" class="btn">Delete</button>
+      </td>
+    `;
     });
 }
 
-// Function to edit a user
+// Function to handle add user form submission
+document
+    .getElementById("addUserForm")
+    .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const useremail = document.getElementById("useremail").value;
+
+        // Add new user to the users array
+        const newUser = {
+            id: Date.now().toString(), // Unique ID based on timestamp
+            name: username,
+            email: useremail,
+        };
+
+        users.push(newUser);
+        renderUsers();
+
+        // Reset the form
+        document.getElementById("addUserForm").reset();
+    });
+
+// Function to handle editing a user
 function editUser(userId) {
     const user = users.find((u) => u.id === userId);
-    document.getElementById("userId").value = user.id;
-    document.getElementById("userName").value = user.name;
-    document.getElementById("userEmail").value = user.email;
-    document.getElementById("userPhone").value = user.phone;
-    document.getElementById("submitButton").textContent = "Update User";
+
+    // Pre-fill the form with the user's data
+    document.getElementById("username").value = user.name;
+    document.getElementById("useremail").value = user.email;
+
+    // Change the form submission to update the user instead of adding a new one
+    document.getElementById("addUserForm").onsubmit = function (event) {
+        event.preventDefault();
+        const updatedUser = {
+            id: user.id, // Keep the same ID
+            name: document.getElementById("username").value,
+            email: document.getElementById("useremail").value,
+        };
+
+        // Update the user data
+        const userIndex = users.findIndex((u) => u.id === user.id);
+        users[userIndex] = updatedUser;
+        renderUsers();
+
+        // Reset form and revert to the add user behavior
+        document.getElementById("addUserForm").reset();
+        document.getElementById("addUserForm").onsubmit = function (event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const useremail = document.getElementById("useremail").value;
+
+            const newUser = {
+                id: Date.now().toString(), // Unique ID based on timestamp
+                name: username,
+                email: useremail,
+            };
+            users.push(newUser);
+            renderUsers();
+            document.getElementById("addUserForm").reset();
+        };
+    };
 }
 
-// Function to delete a user
+// Function to handle deleting a user
 function deleteUser(userId) {
-    // Remove the user from the users array
-    users = users.filter((u) => u.id !== userId);
-
-    // Update the table with the new list of users
-    displayUsers();
+    const confirmation = confirm("Are you sure you want to delete this user?");
+    if (confirmation) {
+        // Remove the user from the array using ID
+        users = users.filter((u) => u.id !== userId);
+        renderUsers();
+    }
 }
 
-// Initial display of users when the page loads
-displayUsers();
+// Render users when the page loads
+renderUsers();

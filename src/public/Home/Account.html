@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Account</title>
+        <link rel="stylesheet" href="../Chatbot/Chatbotstyle.css" />
+        <link rel="stylesheet" href="./index.css" />
+    </head>
+    <body>
+        <!-- Header Section -->
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <img src="../img/Logo.png" width="125px" alt="Logo" />
+                    </div>
+                    <nav>
+                        <ul id="MenuItems">
+                            <li><a href="Index-AL.html">Home</a></li>
+                            <li><a href="product1-AL.html">Products</a></li>
+                            <li><a href="AboutUs.html">About Us</a></li>
+                            <li><a href="Contact-AL.html">Contact</a></li>
+                            <li><a href="Account.html">Account</a></li>
+                            <li><a href="Cart.html">Cart</a></li>
+                        </ul>
+                    </nav>
+                    <img
+                        src="../img/Logout.png"
+                        id="logout-btn"
+                        class="logout-btn"
+                        width="30px"
+                        height="20px"
+                        alt="Logout"
+                        onclick="logout()"
+                    />
+                    <img
+                        src="../img/menu.png"
+                        class="menu-icon"
+                        onclick="menutoggle()"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Section -->
+        <div class="small-container account-page">
+            <h2>My Account</h2>
+            <div class="row">
+                <div class="col-2">
+                    <h3>Account Information</h3>
+                    <p><strong>Username:</strong> JohnDoe</p>
+                    <p><strong>Email:</strong> johndoe@example.com</p>
+                    <p><strong>Member Since:</strong> January 2023</p>
+                    <button class="btn">Edit Profile</button>
+                </div>
+                <div class="col-2">
+                    <h3>Order History</h3>
+                    <ul>
+                        <li>
+                            Order #12345 - <strong>Status:</strong> Delivered
+                        </li>
+                        <li>
+                            Order #67890 - <strong>Status:</strong> In Progress
+                        </li>
+                        <li>
+                            Order #54321 - <strong>Status:</strong> Cancelled
+                        </li>
+                    </ul>
+                    <button class="btn">View All Orders</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col-1">
+                        <h3>Download Our App</h3>
+                        <p>Download App for Android and IOS Mobile Phone.</p>
+                        <div class="app-logo">
+                            <img src="../img/play-store.png" />
+                            <img src="../img/app-store.png" />
+                        </div>
+                    </div>
+                    <div class="footer-col-2">
+                        <img src="../img/FooterImg.png" alt="Footer Logo" />
+                        <p>
+                            Our Purpose Is To Sustainably Bring Timeless
+                            European Fashion to Every Man, Enhancing Confidence
+                            and Style.
+                        </p>
+                    </div>
+                    <div class="footer-col-3">
+                        <h3>Useful Links</h3>
+                        <ul>
+                            <li>Coupons</li>
+                            <li>Blog Post</li>
+                            <li>Return Policy</li>
+                            <li>Join Affiliate</li>
+                        </ul>
+                    </div>
+                    <div class="footer-col-4">
+                        <h3>Follow Us</h3>
+                        <ul>
+                            <li>Facebook</li>
+                            <li>Instagram</li>
+                            <li>Twitter</li>
+                            <li>YouTube</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <p class="copyright">Copyright 2024 - Your Company</p>
+        </div>
+
+        <!-- JavaScript -->
+        <script src="Index.js"></script>
+    </body>
+</html>
