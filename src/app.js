@@ -5,7 +5,6 @@ dotenv.config();
 const userRoutes = require("./routes/users");
 const paymentRoutes = require("./routes/payment");
 const cartRoutes = require("./routes/cart");
-const productRoutes = require("./routes/product");
 // const cors = require("cors");
 
 // Khởi tạo ứng dụng Express
@@ -23,7 +22,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/users", userRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/cart", cartRoutes);
-// app.use("/api/product/:id", productRoutes);
 
 // Route chính
 app.get("/", (req, res) => {
@@ -35,12 +33,17 @@ app.get("/Home/product1-detail.html", (req, res) => {
     res.sendFile(path.join(__dirname, "public/Home/product1-detail.html"));
 });
 
+//Router admin page
 app.get("/admin.html", (req, res) => {
     res.sendFile(__dirname + "/public/Admin/admin.html");
 });
 
 app.get("/Index-AL.html", (req, res) => {
     res.sendFile(__dirname + "/public/Home/Index-AL.html");
+});
+
+app.get("payment.html", (req, res) => {
+    res.sendFile(__dirname + "/public/Home/payment.html");
 });
 
 // Khởi chạy server

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Product Management</title>
+        <link rel="stylesheet" href="../css/product.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Product Management</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li><a href="../html/admin.html">Dashboard</a></li>
+                    <li><a href="../html/user.html">Users</a></li>
+                </ul>
+            </nav>
+            <main>
+                <h2>Add or Edit Products</h2>
+
+                <!-- Form to Add/Edit Product -->
+                <form id="productForm" enctype="multipart/form-data">
+                    <input type="hidden" id="productId" />
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Product Name"
+                        required
+                    />
+                    <input type="file" id="productImage" accept="image/*" />
+                    <input
+                        type="number"
+                        id="productQuantity"
+                        placeholder="Quantity"
+                        required
+                        min="1"
+                    />
+                    <button type="submit" id="submitButton">Add Product</button>
+                </form>
+
+                <h2>Existing Products</h2>
+                <!-- Table for Displaying Products -->
+                <table id="productTable">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Image</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody">
+                        <!-- Products will be displayed here -->
+                    </tbody>
+                </table>
+            </main>
+            <footer>
+                <p>&copy; 2024 Product Management</p>
+            </footer>
+        </div>
+
+        <script src="../js/product.js"></script>
+    </body>
+</html>

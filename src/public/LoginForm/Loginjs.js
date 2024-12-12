@@ -31,7 +31,7 @@ registerForm.addEventListener("submit", (e) => {
     wrapper.classList.remove("active"); // Switch back to Login form
 });
 
-// Xử lý Đăng ký
+// Handle Registration
 document
     .getElementById("register-form")
     .addEventListener("submit", function (e) {
@@ -50,8 +50,8 @@ document
         })
             .then((response) => response.json())
             .then((data) => {
-                if (data.message === "Đăng ký thành công!") {
-                    alert("Đăng ký thành công! Vui lòng đăng nhập.");
+                if (data.message === "Registration successful!") {
+                    alert("Registration successful! Please log in.");
                     showLoginForm();
                 } else {
                     alert(data.message);
@@ -62,7 +62,7 @@ document
             });
     });
 
-// Xử lý Đăng nhập
+// Handle Login
 document
     .getElementById("login-form")
     .addEventListener("submit", async function (e) {
@@ -72,7 +72,7 @@ document
         const password = document.getElementById("login-password").value;
 
         try {
-            // Gửi yêu cầu đăng nhập tới server
+            // Send login request to the server
             const response = await fetch("/api/users/login", {
                 method: "POST",
                 headers: {
@@ -80,7 +80,7 @@ document
                 },
                 body: JSON.stringify({ email, password }),
             });
-            // Kiểm tra phản hồi từ server
+            // Check the server response
             try {
                 const jsonResponse = await response.json();
                 if (response.ok) {
@@ -89,11 +89,11 @@ document
                     alert(jsonResponse.message);
                 }
             } catch (error) {
-                alert("Đã xảy ra lỗi, vui lòng thử lại sau!");
+                alert("An error occurred, please try again later!");
             }
         } catch (error) {
             console.error("Error:", error);
             console.log("Error:", error);
-            alert("Đã xảy ra lỗi, vui lòng thử lại sau!");
+            alert("An error occurred, please try again later!");
         }
     });

@@ -85,50 +85,55 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>Color</th>
                                 <th>Size</th>
                                 <th>Add to Cart</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td>Black</td>
                                 <td>S</td>
                                 <td>
                                     <button
                                         class="btn btn-danger btn-sm"
-                                        id="add-to-cart-01"
+                                        onclick="addToCart('1', 'Short Sleeve Crew Neck T-Shirt', 228510, '/img/Product-1.jpg', 'S', 1)"
                                     >
                                         + Cart
                                     </button>
                                 </td>
                             </tr>
                             <tr>
+                                <td>Black</td>
                                 <td>M</td>
                                 <td>
                                     <button
                                         class="btn btn-danger btn-sm"
-                                        id="add-to-cart-02"
+                                        onclick="addToCart('2', 'Short Sleeve Crew Neck T-Shirt', 228510, '/img/Product-1.jpg', 'M', 1)"
                                     >
                                         + Cart
                                     </button>
                                 </td>
                             </tr>
                             <tr>
+                                <td>Black</td>
                                 <td>L</td>
                                 <td>
                                     <button
                                         class="btn btn-danger btn-sm"
-                                        id="add-to-cart-03"
+                                        onclick="addToCart('3', 'Short Sleeve Crew Neck T-Shirt', 228510, '/img/Product-1.jpg', 'L', 1)"
                                     >
                                         + Cart
                                     </button>
                                 </td>
                             </tr>
                             <tr>
+                                <td>Black</td>
                                 <td>XL</td>
                                 <td>
                                     <button
                                         class="btn btn-danger btn-sm"
-                                        id="add-to-cart-04"
+                                        onclick="addToCart('4', 'Short Sleeve Crew Neck T-Shirt', 228510, '/img/Product-1.jpg', 'XL', 1)"
                                     >
                                         + Cart
                                     </button>
@@ -291,113 +296,54 @@
             </div>
         </div>
         <script>
-            // Example: Fetch product details from backend
-            document.addEventListener("DOMContentLoaded", function () {
-                const productId = 1; // This would be dynamic in a real app
+            async function addToCart(id, name, price, image, size, quantity) {
+                try {
+                    console.log("Request sent to server:", {
+                        id,
+                        name,
+                        price,
+                        image,
+                        size,
+                        quantity,
+                    });
 
-                // Fetch product details from the server
-                fetch(`/api/products/${productId}`)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        document.getElementById("product-name").innerText =
-                            data.name;
-                        document.getElementById("product-image").src =
-                            data.image;
-                        document.getElementById(
-                            "product-description"
-                        ).innerText = data.description;
-                        document.getElementById(
-                            "product-price"
-                        ).innerText = `$${data.price}`;
-                    })
-                    .catch((error) =>
-                        console.error("Error fetching product:", error)
+                    const res = await fetch("/api/cart", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            id,
+                            name,
+                            price,
+                            image,
+                            size,
+                            quantity,
+                        }),
+                    });
+
+                    // Check response from server
+                    console.log("Server response status:", res.status);
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        alert("Product has been added to cart!");
+                        console.log("Response from server: ", data);
+                    } else {
+                        // If not successful, get error from response
+                        const errorText = await res.text();
+                        console.error("Error from server:", errorText);
+                        alert(`Error: ${errorText}`);
+                    }
+                } catch (error) {
+                    // Error sending request
+                    console.error(
+                        "Unspecified error while sending request:",
+                        error
                     );
+                    alert("Unspecified error. Please try again.");
+                }
+            }
 
-                // Add to Cart functionality
-                document
-                    .getElementById("add-to-cart-01")
-                    .addEventListener("click", function () {
-                        fetch(`/api/cart`, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                productId: productId,
-                                quantity: 1,
-                            }),
-                        })
-                            .then((response) => response.json())
-                            .then((data) => alert("Product added to cart!"))
-                            .catch((error) =>
-                                console.error("Error adding to cart:", error)
-                            );
-                    });
-
-                // Add to Cart functionality
-                document
-                    .getElementById("add-to-cart-02")
-                    .addEventListener("click", function () {
-                        fetch(`/api/cart`, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                productId: productId,
-                                quantity: 1,
-                            }),
-                        })
-                            .then((response) => response.json())
-                            .then((data) => alert("Product added to cart!"))
-                            .catch((error) =>
-                                console.error("Error adding to cart:", error)
-                            );
-                    });
-
-                // Add to Cart functionality
-                document
-                    .getElementById("add-to-cart-03")
-                    .addEventListener("click", function () {
-                        fetch(`/api/cart`, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                productId: productId,
-                                quantity: 1,
-                            }),
-                        })
-                            .then((response) => response.json())
-                            .then((data) => alert("Product added to cart!"))
-                            .catch((error) =>
-                                console.error("Error adding to cart:", error)
-                            );
-                    });
-
-                // Add to Cart functionality
-                document
-                    .getElementById("add-to-cart-04")
-                    .addEventListener("click", function () {
-                        fetch(`/api/cart`, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                productId: productId,
-                                quantity: 1,
-                            }),
-                        })
-                            .then((response) => response.json())
-                            .then((data) => alert("Product added to cart!"))
-                            .catch((error) =>
-                                console.error("Error adding to cart:", error)
-                            );
-                    });
-            });
+            window.addToCart = addToCart;
         </script>
         <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

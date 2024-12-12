@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>User Management</title>
+        <link rel="stylesheet" href="../css/user.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>User Management</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li><a href="admin.html">Dashboard</a></li>
+                    <li><a href="../html/product.html">Products</a></li>
+                </ul>
+            </nav>
+            <main>
+                <h2>Add or Edit Users</h2>
+
+                <!-- Form to Add or Edit Users -->
+                <form id="userForm">
+                    <input type="hidden" id="userId" />
+                    <input
+                        type="text"
+                        id="userName"
+                        placeholder="User Name"
+                        required
+                    />
+                    <input
+                        type="email"
+                        id="userEmail"
+                        placeholder="Email"
+                        required
+                    />
+                    <input
+                        type="tel"
+                        id="userPhone"
+                        placeholder="Phone"
+                        required
+                    />
+                    <button type="submit" id="submitButton">Add User</button>
+                </form>
+
+                <h2>Existing Users</h2>
+                <!-- Table for Displaying Users -->
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <!-- Users will be displayed here -->
+                    </tbody>
+                </table>
+            </main>
+            <footer>
+                <p>&copy; 2024 User Management</p>
+            </footer>
+        </div>
+
+        <script src="../js/user.js"></script>
+    </body>
+</html>

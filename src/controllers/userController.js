@@ -3,28 +3,28 @@ const bcrypt = require("bcrypt");
 // const jwt = require("jsonwebtoken");
 const path = require("path");
 
-// Đăng ký người dùng
+// User registration
 exports.registerUser = (req, res) => {
     const { username, email, password } = req.body;
 
-    // Kiểm tra xem email đã tồn tại chưa
+    // Check if email already exists
     db.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
         if (err) {
-            return res.status(500).json({ message: "Đã xảy ra lỗi!" });
+            return res.status(500).json({ message: "An error occurred!" });
         }
         if (results.length > 0) {
-            return res.status(400).json({ message: "Email đã tồn tại!" });
+            return res.status(400).json({ message: "Email already exists!" });
         }
 
-        // Mã hóa mật khẩu
+        // Encrypt password
         bcrypt.hash(password, 10, (err, hashedPassword) => {
             if (err) {
                 return res
                     .status(500)
-                    .json({ message: "Mã hóa mật khẩu không thành công!" });
+                    .json({ message: "Password encryption failed!" });
             }
 
-            // Lưu người dùng vào cơ sở dữ liệu
+            // Save the user to the database
             db.query(
                 "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
                 [username, email, hashedPassword],
@@ -32,53 +32,53 @@ exports.registerUser = (req, res) => {
                     if (err) {
                         return res
                             .status(500)
-                            .json({ message: "Lỗi khi lưu người dùng!" });
+                            .json({ message: "Error saving user!" });
                     }
 
-                    // Gửi phản hồi thành công
+                    // Send success response
                     return res
                         .status(201)
-                        .json({ message: "Đăng ký thành công!" });
+                        .json({ message: "Registration successful!" });
                 }
             );
         });
     });
 };
 
-// Đăng nhập người dùng
+// User login
 exports.loginUser = (req, res) => {
     const { email, password } = req.body;
 
-    // Kiểm tra xem người dùng có trong cơ sở dữ liệu không
+    // Check if the user exists in the database
     db.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
         if (err) {
-            return res.status(500).json({ message: "Đã xảy ra lỗi!" });
+            return res.status(500).json({ message: "An error occurred!" });
         }
 
         if (results.length === 0) {
-            return res.status(400).json({ message: "Email không tồn tại!" });
+            return res.status(400).json({ message: "Email does not exist!" });
         }
 
         const user = results[0];
 
-        // Kiểm tra mật khẩu
+        // Check password
         bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) {
                 return res
                     .status(500)
-                    .json({ message: "Lỗi so sánh mật khẩu!" });
+                    .json({ message: "Password comparison error!" });
             }
 
             if (!isMatch) {
-                return res.status(400).json({ message: "Mật khẩu sai!" });
+                return res.status(400).json({ message: "Incorrect password!" });
             }
-            // Nếu là admin, trả về URL của trang quản trị
+            // If the user is an admin, return the admin page URL
             if (email === "admin@gmail.com" && password === "admin") {
                 return res.json({
-                    redirectUrl: "http://localhost:3000/Admin/admin.html",
+                    redirectUrl: "http://localhost:3000/Admin/html/admin.html",
                 });
             } else {
-                // Nếu là người dùng thông thường, trả về URL của trang chủ
+                // If the user is a regular user, return the homepage URL
                 return res.json({
                     redirectUrl: "http://localhost:3000/Home/Index-AL.html",
                 });

@@ -20,9 +20,10 @@ router.post("/create-payment", async (req, res) => {
     } = config;
 
     // Lấy số tiền từ request body, nếu không có thì dùng giá trị mặc định
-    var amount = "100000"; //var amount = (parseFloat(req.body.amount) * 100).toString(); // Chuyển đổi thành số nguyên
-    var orderId = partnerCode + new Date().getTime(); // Tạo orderId duy nhất
-    var requestId = orderId; // Request ID trùng với orderId để dễ dàng xác định
+    // var amount = (parseFloat(req.body.amount) * 100).toString();
+    var amount = "228510";
+    var orderId = partnerCode + new Date().getTime();
+    var requestId = orderId;
 
     // Tạo chuỗi rawSignature trước khi tính toán chữ ký
     var rawSignature =
@@ -31,13 +32,13 @@ router.post("/create-payment", async (req, res) => {
         "&amount=" +
         amount +
         "&extraData=" +
-        (extraData || "") + // Nếu không có extraData, để trống
+        (extraData || "") +
         "&ipnUrl=" +
         ipnUrl +
         "&orderId=" +
         orderId +
         "&orderInfo=" +
-        (orderInfo || "") + // Nếu không có orderInfo, để trống
+        (orderInfo || "") +
         "&partnerCode=" +
         partnerCode +
         "&redirectUrl=" +
@@ -84,12 +85,12 @@ router.post("/create-payment", async (req, res) => {
         data: requestBody,
     };
 
+    console.log("Options for axios:", options);
+
     let result;
     try {
         // Gửi yêu cầu đến MoMo API
         result = await axios(options);
-
-        // Kiểm tra nếu có payUrl
         if (result.data && result.data.payUrl) {
             // Trả về payUrl cho frontend
             return res.json({

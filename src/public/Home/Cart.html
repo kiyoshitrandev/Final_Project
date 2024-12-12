@@ -56,7 +56,6 @@
                             </tr>
                         </thead>
                         <tbody id="cart-items">
-                            <!-- Dynamic rows will be inserted here -->
                         </tbody>
                     </table>
                 </div>
@@ -224,67 +223,72 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const cartItemsContainer = document.getElementById("cart-items");
+        const cartItemsContainer =
+            document.getElementById("cart-items");
         const totalCostElement = document.getElementById("total-cost");
         const itemCountElement = document.getElementById("item-count");
         const orderBtn = document.getElementById("order-btn");
-    
-        // Hàm lấy dữ liệu giỏ hàng
+
         async function fetchCart() {
             try {
                 const res = await fetch("/api/cart");
-                if (!res.ok) throw new Error("Failed to fetch cart data");
+                if (!res.ok)
+                    throw new Error("Failed to fetch cart data");
                 const cart = await res.json();
                 renderCart(cart);
             } catch (error) {
                 console.error("Error fetching cart:", error);
-                alert("Lỗi khi tải dữ liệu giỏ hàng.");
             }
         }
-    
-        // Hàm render giỏ hàng
+
         function renderCart(cart) {
             cartItemsContainer.innerHTML = "";
             let totalCost = 0;
             let itemCount = 0;
-    
+
             cart.forEach((item) => {
                 const row = document.createElement("tr");
                 const itemTotal = item.price * item.quantity;
-    
+
                 row.innerHTML = `
-                    <td>
-                        <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
-                        ${item.name}
-                    </td>
-                    <td>${item.size}</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-secondary change-quantity" data-id="${item.id}" data-size="${item.size}" data-delta="-1">-</button>
-                        ${item.quantity}
-                        <button class="btn btn-sm btn-outline-secondary change-quantity" data-id="${item.id}" data-size="${item.size}" data-delta="1">+</button>
-                    </td>
-                    <td>${item.price.toLocaleString()}</td>
-                    <td>${itemTotal.toLocaleString()}</td>
-                    <td>
-                        <button class="btn btn-danger btn-sm remove-item" data-id="${item.id}" data-size="${item.size}">Remove</button>
-                    </td>
-                `;
+                <td>
+                    <img src="${item.image}" alt="${
+                    item.name
+                }" style="width: 50px; height: auto; margin-right: 10px;">
+                    ${item.name}
+                </td>
+                <td>${item.size}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity('${
+                        item.id
+                    }', '${item.size}', -1)">-</button>
+                    ${item.quantity}
+                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity('${
+                        item.id
+                    }', '${item.size}', 1)">+</button>
+                </td>
+                <td>${item.price.toLocaleString()}</td>
+                <td>${itemTotal.toLocaleString()}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="removeItem('${
+                        item.id
+                    }', '${item.size}')">Remove</button>
+                </td>
+            `;
                 cartItemsContainer.appendChild(row);
-    
+
                 totalCost += itemTotal;
                 itemCount += item.quantity;
             });
-    
+
             totalCostElement.textContent = totalCost.toLocaleString();
             itemCountElement.textContent = itemCount;
-    
-            // Lưu số tiền vào localStorage
+
             orderBtn.addEventListener("click", () => {
-                localStorage.setItem("totalAmount", totalCost);
+                localStorage.setItem("totalAmount", totalCost); 
             });
         }
-    
-        // Hàm cập nhật số lượng sản phẩm
+
         async function updateQuantity(id, size, delta) {
             try {
                 const res = await fetch(`/api/cart/${id}`, {
@@ -292,25 +296,27 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ size, delta }),
                 });
-    
+
                 if (res.ok) {
                     fetchCart();
                 } else {
                     const errorText = await res.text();
-                    alert(`Lỗi khi cập nhật sản phẩm: ${errorText}`);
+                    alert(`Error updating product: ${errorText}`);
                 }
             } catch (error) {
-                console.error("Lỗi khi cập nhật số lượng:", error);
+                console.error("Error updating quantity:", error);
             }
         }
-    
-        // Hàm xóa sản phẩm khỏi giỏ hàng
+
         async function removeItem(id, size) {
             try {
-                const res = await fetch(`/api/cart/${id}?size=${size}`, {
-                    method: "DELETE",
-                });
-    
+                const res = await fetch(
+                    `/api/cart/${id}?size=${size}`,
+                    {
+                        method: "DELETE",
+                    }
+                );
+
                 if (res.ok) {
                     fetchCart();
                 } else {
@@ -318,33 +324,20 @@
                     alert(`Lỗi: ${errorText}`);
                 }
             } catch (error) {
-                console.error("Lỗi không xác định khi xóa sản phẩm:", error);
-                alert("Lỗi không xác định. Vui lòng thử lại.");
+                console.error(
+                   "Unknown error while deleting product:",
+                    error
+                );
+                alert("Unknown error. Please try again.");
             }
         }
-    
-        // Event delegation cho các nút thay đổi số lượng và xóa sản phẩm
-        cartItemsContainer.addEventListener("click", (event) => {
-            const target = event.target;
-    
-            if (target.classList.contains("change-quantity")) {
-                const id = target.dataset.id;
-                const size = target.dataset.size;
-                const delta = parseInt(target.dataset.delta, 10);
-                updateQuantity(id, size, delta);
-            }
-    
-            if (target.classList.contains("remove-item")) {
-                const id = target.dataset.id;
-                const size = target.dataset.size;
-                removeItem(id, size);
-            }
-        });
-    
-        // Tải giỏ hàng ban đầu
+
         fetchCart();
+
+        window.updateQuantity = updateQuantity;
+        window.removeItem = removeItem;
     });
-    </script>    
+</script>  
         <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="/Chatbot/Chatbot.js"></script>
