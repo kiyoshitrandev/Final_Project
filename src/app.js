@@ -5,7 +5,6 @@ dotenv.config();
 const userRoutes = require("./routes/users");
 const paymentRoutes = require("./routes/payment");
 const cartRoutes = require("./routes/cart");
-// const adminRoutes = require("./routes/admin");
 // const cors = require("cors");
 
 // Khởi tạo ứng dụng Express
@@ -23,19 +22,16 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/users", userRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/cart", cartRoutes);
-// app.use("/api/admin", adminRoutes);
 
 // Route chính
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public/Home/Index.html"));
 });
 
-//Router product1 detail
 app.get("/Home/product1-detail.html", (req, res) => {
     res.sendFile(path.join(__dirname, "public/Home/product1-detail.html"));
 });
 
-//Router admin page
 app.get("/admin.html", (req, res) => {
     res.sendFile(__dirname + "/public/Admin/admin.html");
 });

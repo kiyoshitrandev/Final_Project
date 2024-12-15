@@ -19,9 +19,8 @@ router.post("/create-payment", async (req, res) => {
         lang,
     } = config;
 
-    // Lấy số tiền từ request body, nếu không có thì dùng giá trị mặc định
-    // var amount = (parseFloat(req.body.amount) * 100).toString();
     var amount = "228510";
+    // var amount = (parseFloat(req.body.amount) * 100).toString();
     var orderId = partnerCode + new Date().getTime();
     var requestId = orderId;
 
