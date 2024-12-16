@@ -10,9 +10,34 @@
         />
         <link rel="stylesheet" href="/Chatbot/Chatbotstyle.css" />
         <link rel="stylesheet" href="/Home/index.css" />
+        <style>
+            .product-image {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 20px;
+            }
+            .detail-section {
+                border-left: 2px solid #ddd;
+                padding-left: 20px;
+            }
+            .price {
+                color: #d9534f;
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .original-price {
+                text-decoration: line-through;
+                color: #888;
+                font-size: 18px;
+            }
+            .availability {
+                color: green;
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
-        <!-- Home Page -->
+        <!-- Header and Navbar -->
         <div class="header">
             <div class="container">
                 <div class="navbar">
@@ -25,179 +50,107 @@
                             <li><a href="product1-AL.html">Products</a></li>
                             <li><a href="AboutUs-AL.html">About Us</a></li>
                             <li><a href="Contact-AL.html">Contact</a></li>
-                            <li><a href="Account.html">Account</a></li>
+                            <li><a href="#">Account</a></li>
                             <li><a href="Cart.html">Cart</a></li>
                         </ul>
                     </nav>
-                    <img
-                        src="../img/Logout.png"
-                        id="logout-btn"
-                        class="logout-btn"
-                        width="30px"
-                        height="20px"
-                        alt="Logout"
-                        onclick="logout()"
-                    />
-                    <img
-                        src="../img/menu.png"
-                        class="menu-icon"
-                        onclick="menutoggle()"
-                    />
                 </div>
             </div>
         </div>
 
-        <!-- Featured Products -->
-        <div class="small-container">
-            <div class="row row-2">
-                <h2>All Products</h2>
-                <div class="search-bar">
-                    <input
-                        type="text"
-                        placeholder="Search products..."
-                        class="search-input"
-                    />
-                    <button class="search-btn">🔍</button>
-                </div>
-                <select>
-                    <option>Default Sorting</option>
-                    <option>Sort by Price</option>
-                    <option>Sort by Popularity</option>
-                    <option>Sort by Sale</option>
-                </select>
-            </div>
+        <!-- Product Detail -->
+        <div class="container py-5">
             <div class="row">
-                <div class="col-4">
-                    <a
-                        href="/Home/product8-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-8.jpg" />
-                        <h4>Men’s Strapped Necklace Black Bolf TT7126</h4>
-                        <p>$12.99</p>
-                    </a>
+                <!-- Product Image -->
+                <div class="col-md-6">
+                    <img
+                        src="../img/Product-6.jpg"
+                        alt="Product Image"
+                        class="product-image"
+                    />
                 </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product9-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-9.jpg" />
-                        <h4>Men's Camo Wristwatch Green Bolf 3261</h4>
-                        <p>$24.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product10-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-10.jpg" />
-                        <h4>Men's Elegant Slim Tie Grey Bolf K001</h4>
-                        <p>$9.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product11-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-11.jpg" />
-                        <h4>Men's Elegant Bow Tie Black Bolf M001</h4>
-                        <p>$9.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product12-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-12.jpg" />
-                        <h4>Men’s Leather Belt Black Bolf 019</h4>
-                        <p>$12.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product6-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-6.jpg" />
-                        <h4>Men’s Warm Winter Beanie Black Bolf 386008</h4>
-                        <p>$12.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product7-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-7.jpg" />
-                        <h4>
-                            Men’s Set of Bracelets Black Bolf TT1138-3P 3 PACK
-                        </h4>
-                        <p>$12.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product8-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-8.jpg" />
-                        <h4>Men’s Strapped Necklace Black Bolf TT7126</h4>
-                        <p>$12.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product1-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-1.jpg" />
-                        <h4>Men's Plain T-shirt Black Bolf 2005</h4>
-                        <p>$9.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product2-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-2.jpg" />
-                        <h4>Men's Kangaroo Hoodie Graphite Bolf MB001</h4>
-                        <p>$13.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product3-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-3.jpg" />
-                        <h4>Men's Elegant Long Sleeve Shirt Black Bolf 4711</h4>
-                        <p>$19.99</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <a
-                        href="/Home/product4-detail.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <img src="../img/Product-4.jpg" />
-                        <h4>Men's Sweatpants Claret Bolf XW01</h4>
-                        <p>$12.99</p>
-                    </a>
+
+                <!-- Product Details -->
+                <div class="col-md-6 detail-section">
+                    <h1>Men’s Warm Winter Beanie Black Bolf 386008</h1>
+                    <p class="text-muted">Warm & Stylish</p>
+                    <p class="price">
+                        <span class="original-price">$14.99</span> $12.99
+                    </p>
+                    <p class="text-muted">
+                        Best price valid until December 30, 2024
+                    </p>
+
+                    <!-- Sizes and Availability -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Color</th>
+                                <th>Size</th>
+                                <th>Add to Cart</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Black</td>
+                                <td>S</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger btn-sm"
+                                        onclick="addToCart('1', 'Short Sleeve Crew Neck T-Shirt', 228510, '/img/Product-1.jpg', 'S', 1)"
+                                    >
+                                        + Cart
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Black</td>
+                                <td>M</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger btn-sm"
+                                        onclick="addToCart('2', 'Short Sleeve Crew Neck T-Shirt', 228510, '/img/Product-1.jpg', 'M', 1)"
+                                    >
+                                        + Cart
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Black</td>
+                                <td>L</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger btn-sm"
+                                        onclick="addToCart('3', 'Short Sleeve Crew Neck T-Shirt', 228510, '/img/Product-1.jpg', 'L', 1)"
+                                    >
+                                        + Cart
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Black</td>
+                                <td>XL</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger btn-sm"
+                                        onclick="addToCart('4', 'Short Sleeve Crew Neck T-Shirt', 228510, '/img/Product-1.jpg', 'XL', 1)"
+                                    >
+                                        + Cart
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Product Description -->
+                    <h5>Description</h5>
+                    <ul>
+                        <li>Made with soft, stretchable material.</li>
+                        <li>Keeps you warm and cozy in winter.</li>
+                        <li>Perfect for casual and outdoor use.</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-
-        <!-- Pagination -->
-        <div class="page-btn">
-            <a href="product1-AL.html">1</a>
-            <a href="product2-AL.html">2</a>
-            <a href="product3-AL.html">3</a>
-            <a>&#8594;</a>
         </div>
 
         <!-- footer -->
@@ -342,36 +295,58 @@
                 </form>
             </div>
         </div>
-
         <script>
-            // Lấy các phần tử từ HTML
-            const searchInput = document.querySelector(".search-input");
-            const searchButton = document.querySelector(".search-btn");
-            const productCards = document.querySelectorAll(".col-4");
+            async function addToCart(id, name, price, image, size, quantity) {
+                try {
+                    console.log("Request sent to server:", {
+                        id,
+                        name,
+                        price,
+                        image,
+                        size,
+                        quantity,
+                    });
 
-            // Hàm tìm kiếm
-            function searchProducts() {
-                const searchQuery = searchInput.value.toLowerCase().trim();
-                productCards.forEach((card) => {
-                    const productName = card
-                        .querySelector("h4")
-                        .textContent.toLowerCase();
-                    if (productName.includes(searchQuery)) {
-                        card.style.display = "block";
+                    const res = await fetch("/api/cart", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            id,
+                            name,
+                            price,
+                            image,
+                            size,
+                            quantity,
+                        }),
+                    });
+
+                    // Check response from server
+                    console.log("Server response status:", res.status);
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        alert("Product has been added to cart!");
+                        console.log("Response from server: ", data);
                     } else {
-                        card.style.display = "none";
+                        // If not successful, get error from response
+                        const errorText = await res.text();
+                        console.error("Error from server:", errorText);
+                        alert(`Error: ${errorText}`);
                     }
-                });
+                } catch (error) {
+                    // Error sending request
+                    console.error(
+                        "Unspecified error while sending request:",
+                        error
+                    );
+                    alert("Unspecified error. Please try again.");
+                }
             }
-            searchButton.addEventListener("click", searchProducts);
-            searchInput.addEventListener("input", searchProducts);
+
+            window.addToCart = addToCart;
         </script>
         <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="/Chatbot/Chatbot.js"></script>
-        <script src="/Home/Index.js"></script>
-        <script
-            nomodule
-            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-        ></script>
     </body>
 </html>
